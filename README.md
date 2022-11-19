@@ -1,5 +1,12 @@
 # Vietnamese Temporal Annotation 
-
+	package:
+		+ python
+			+ tokenizers==0.13.1
+			+ transformers==4.16.2
+			+ @demdecuong vi-nlp-core==1.1.12 (require pyahocorasick==1.4.4)
+			+ @nguyenvulebinh regtag==0.4.0.1 (regex bio taggen)
+		+ nodejs
+			+ cheerio
 ### Tokenizer, Masked-Language Modeling and RoBERTa2RoBERTa Model
 ```bash
 python tokenizer.py
