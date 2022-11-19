@@ -243,7 +243,7 @@ trainer = Seq2SeqTrainer(
     eval_dataset=val_data,
 )
 
-trainer._load_state_dict_in_model(torch.load(model_res+ '/pytorch_model.bin'))
+# trainer._load_state_dict_in_model(torch.load(model_res+ '/pytorch_model.bin'))
 
 # Fine-tune the model, training and evaluating on the train dataset
 trainer.train()

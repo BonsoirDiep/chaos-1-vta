@@ -8,6 +8,8 @@
 		+ @nguyenvulebinh regtag==0.4.0.1 (regex bio taggen)
 	+ nodejs
 		+ cheerio
+		+ romans
+
 #### TokRoBERTa2/vocab.json
 ```
 ...
@@ -19,6 +21,7 @@
 "</date>": 10,
 ...
 ```
+
 ### Mix loss (.. site-packages\transformers\models\encoder_decoder\modeling_encoder_decoder.py)
 - line 534: loss = loss_fct(logits.reshape(-1, self.decoder.config.vocab_size), labels.view(-1))
 - mix:
@@ -70,3 +73,14 @@ bash score/s1.sh
 python r2r_eval_bs.py
 bash score/s1.sh
 ```
+
+#### More:
+- Data Generation:
+```bash
+node data_generation\zip4.js train
+node data_generation\zip4.js train
+...
+node data_generation\zip4.js test
+...
+```
+- Copy data_generation/zip4.res.json, data_generation/zip4.test.json to folder /datasets
