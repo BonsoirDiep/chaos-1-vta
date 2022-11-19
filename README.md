@@ -1,8 +1,9 @@
 # Vietnamese Temporal Annotation 
 - package:
-	+ python
+	+ python: main
 		+ tokenizers==0.13.1
 		+ transformers==4.16.2
+	+ python: refer to similar work
 		+ @demdecuong vi-nlp-core==1.1.12 (require pyahocorasick==1.4.4)
 		+ @nguyenvulebinh regtag==0.4.0.1 (regex bio taggen)
 	+ nodejs
