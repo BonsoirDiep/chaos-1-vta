@@ -1,4 +1,6 @@
-# Vietnamese Temporal Annotation 
+# Vietnamese Temporal Annotation
+
+### Package
 - package:
 	+ python: main
 		+ tokenizers==0.13.1
@@ -10,7 +12,7 @@
 		+ cheerio
 		+ romans
 
-#### TokRoBERTa2/vocab.json
+### TokRoBERTa2/vocab.json
 ```
 ...
 "<date{": 5,
@@ -22,7 +24,8 @@
 ...
 ```
 
-### Mix loss (.. site-packages\transformers\models\encoder_decoder\modeling_encoder_decoder.py)
+### Mix loss
+- File: ...site-packages\transformers\models\encoder_decoder\modeling_encoder_decoder.py
 - line 534: loss = loss_fct(logits.reshape(-1, self.decoder.config.vocab_size), labels.view(-1))
 - mix:
 ```python
@@ -74,7 +77,7 @@ python r2r_eval_bs.py
 bash score/s1.sh
 ```
 
-#### More:
+### More:
 - Data Generation:
 ```bash
 node data_generation\zip4.js train
