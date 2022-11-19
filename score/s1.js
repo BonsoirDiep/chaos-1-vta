@@ -55,7 +55,7 @@ unsafeRun( __dirname+ '/ann_attribute');
 unsafeRun( __dirname+ '/sub_attribute');
 
 
-require('fs').createReadStream(__dirname+ '/result_bs.csv')
+require('fs').createReadStream(__dirname+ '/result_gg.csv')
 .pipe(parse({ delimiter: ",", from_line: 2 }))
 .on("data", function (row) {
   // console.log(row);

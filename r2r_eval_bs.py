@@ -157,7 +157,7 @@ batch_size = 4
 #results = test_data.map(generate_summary, batched=True, batch_size=batch_size, remove_columns=["text"])
 # Generate predictions using beam search
 results = test_data.map(generate_summary_beam_search, batched=True, batch_size=batch_size, remove_columns=["text"])
-results.to_csv('./result_bs.csv')
+results.to_csv('./result_gg.csv')
 pred_str_bs = results["pred"]
 
 # # Generate predictions using top-k sampling

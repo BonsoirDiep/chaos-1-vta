@@ -9,6 +9,7 @@
 		+ @demdecuong vi-nlp-core==1.1.12 (require pyahocorasick==1.4.4)
 		+ @nguyenvulebinh regtag==0.4.0.1 (regex bio taggen)
 	+ nodejs
+		+ csv-parse
 		+ cheerio
 		+ romans
 
