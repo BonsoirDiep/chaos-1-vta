@@ -9,14 +9,14 @@
 		+ cheerio
 #### TokRoBERTa2/vocab.json
 ```
-	... 
-	"<date{": 5,
-    "\"ngyx\":\"": 6,
-    "\"thgx\":\"": 7,
-    "\"namx\":\"": 8,
-    "}>": 9,
-    "</date>": 10,
-	...
+...
+"<date{": 5,
+"\"ngyx\":\"": 6,
+"\"thgx\":\"": 7,
+"\"namx\":\"": 8,
+"}>": 9,
+"</date>": 10,
+...
 ```
 ### Mix loss (.. site-packages\transformers\models\encoder_decoder\modeling_encoder_decoder.py)
 - line 534: loss = loss_fct(logits.reshape(-1, self.decoder.config.vocab_size), labels.view(-1))
