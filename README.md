@@ -1,4 +1,15 @@
 # Vietnamese Temporal Annotation
+- Text2text
+  - Input:
+      + hơn 100 năm qua thế giới đã thay đổi nhiều hơn bất kỳ thế kỷ nào trong lịch sử.
+  - Output:
+      + `<date{"namx":"-100"}>`hơn 100 năm qua`</date>` thế giới đã thay đổi nhiều hơn bất kỳ thế kỷ nào trong lịch sử.
+- Run with "python r2r_test.py bio":
+	- Input
+		+ "biến thể mới của sars-cov-2 được dự đoán sẽ là chủng vượt trội ở mỹ sau 5 tuần nữa."
+	- Ouput:
+		- ('Recommend', `'<s>`<b>biến</b> thể mới của sars-cov-2 được dự đoán sẽ là chủng vượt trội ở mỹ`<date{"ngyx":"+35"}>` sau 5 tuần nữa.`</date></s>'`)
+		- ('Seq2seq', ```'<s><s>```<b>b đán</b> thể mới của sars-cov-2 được dự đoán sẽ là chủng vượt trội ở mỹ `<date{"ngyx":"+35"}>`sau 5 tuần nữa`</date>`.`</s>`')
 
 ### Package
 - package:
@@ -55,21 +66,28 @@ for i in range(target1.shape[0]):
 ```
 
 ### Tokenizer, Masked-Language Modeling and RoBERTa2RoBERTa Model
+- Step by step:
 ```bash
 python tokenizer.py
 python tokenizer.test.py
 python mlm.py
 python r2r.py
-python r2r_test.py
 ```
-
+- Test good at many tag <date>:
+```bash
+python r2r_test.py bio
+```
+- Test with beam search good at most 1 tag <date>
+```bash
+python r2r_test.py bs
+```
 ### Eval & Score
 - We have 2 dataset for test.
 - Copy datasets/test1/zip4.test.json to datasets/ or copy datasets/test1/zip4.test.json to datasets/
 #### r2r_eval_best.py
 ```bash
 python r2r_eval_best.py
-bash score/s1.sh
+bash score/s1.sh # use https://cmder.app/ for window (bash, curl, git and more...)
 ```
 
 #### r2r_eval_bs.py
