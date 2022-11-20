@@ -66,7 +66,6 @@ roberta_shared= model
 model.to("cuda")
 
 
-# Generate the text without setting a decoding strategy
 def text_gen(text):
     # create ids of encoded input vectors
     input_ids = tokenizer(text, return_tensors="pt").input_ids.to('cuda')
@@ -88,7 +87,7 @@ def text_gen(text):
             break
     return decoder_input_ids[0]
 
-def generate_summary_beam_search(batch):
+def generate_date_tag(batch):
     output_str= []
     for a in batch["text"]:
         output_str.append(text_gen(a))
@@ -98,13 +97,7 @@ def generate_summary_beam_search(batch):
 
 batch_size = 4
 
-#results = test_data.map(generate_summary, batched=True, batch_size=batch_size, remove_columns=["text"])
 # Generate predictions using beam search
-results = test_data.map(generate_summary_beam_search, batched=True, batch_size=batch_size, remove_columns=["text"])
-results.to_csv('./result_gg.csv')
+results = test_data.map(generate_date_tag, batched=True, batch_size=batch_size, remove_columns=["text"])
+results.to_csv('./score/result_gg.csv')
 pred_str_bs = results["pred"]
-
-# # Generate predictions using top-k sampling
-# results = test_data.map(generate_summary_topk, batched=True, batch_size=batch_size, remove_columns=["text"])
-# pred_str_topk = results["pred"]
-# results.to_csv('./result_tk.csv')

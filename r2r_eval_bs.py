@@ -67,7 +67,7 @@ model.to("cuda")
 
 
 # Generate the text without setting a decoding strategy
-def generate_summary(batch):
+def generate_date_tag_without_decoding_strategy(batch):
     # Tokenizer will automatically set [BOS] <text> [EOS]
     # cut off at BERT max length 512
     inputs = tokenizer(batch["text"], padding="max_length", truncation=True, max_length=200, return_tensors="pt")
@@ -85,7 +85,7 @@ def generate_summary(batch):
     return batch
 
 # Generate a text using beams search
-def generate_summary_beam_search(batch):
+def generate_date_tag_beam_search(batch):
     # Tokenizer will automatically set [BOS] <text> [EOS]
     # cut off at BERT max length 512
     inputs = tokenizer(batch["text"], padding="max_length", truncation=True, max_length=200, return_tensors="pt")
@@ -127,7 +127,7 @@ def generate_summary_beam_search(batch):
     return batch
 
 # Generate a text using beams search
-def generate_summary_topk(batch):
+def generate_date_tag_topk(batch):
     # Tokenizer will automatically set [BOS] <text> [EOS]
     # cut off at BERT max length 512
     inputs = tokenizer(batch["text"], padding="max_length", truncation=True, max_length=200, return_tensors="pt")
@@ -154,13 +154,14 @@ def generate_summary_topk(batch):
 
 batch_size = 4
 
-#results = test_data.map(generate_summary, batched=True, batch_size=batch_size, remove_columns=["text"])
+# # Generate predictions without setting a decoding strategy
+# results = test_data.map(generate_date_tag_without_decoding_strategy, batched=True, batch_size=batch_size, remove_columns=["text"])
+# results.to_csv('./score/result_tk.csv')
+
 # Generate predictions using beam search
-results = test_data.map(generate_summary_beam_search, batched=True, batch_size=batch_size, remove_columns=["text"])
-results.to_csv('./result_gg.csv')
-pred_str_bs = results["pred"]
+results = test_data.map(generate_date_tag_beam_search, batched=True, batch_size=batch_size, remove_columns=["text"])
+results.to_csv('./score/result_gg.csv')
 
 # # Generate predictions using top-k sampling
-# results = test_data.map(generate_summary_topk, batched=True, batch_size=batch_size, remove_columns=["text"])
-# pred_str_topk = results["pred"]
-# results.to_csv('./result_tk.csv')
+# results = test_data.map(generate_date_tag_topk, batched=True, batch_size=batch_size, remove_columns=["text"])
+# results.to_csv('./score/result_tk.csv')
