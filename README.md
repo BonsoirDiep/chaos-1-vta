@@ -1,4 +1,5 @@
 # Vietnamese Temporal Annotation
+- Model: https://drive.google.com/drive/folders/1iHYeZpKOjGmwD0BlqeywcgPNwVThAlzN
 - Text2text
   - Input:
       + hơn 100 năm qua thế giới đã thay đổi nhiều hơn bất kỳ thế kỷ nào trong lịch sử.
