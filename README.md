@@ -37,35 +37,6 @@
 ...
 ```
 
-### Mix loss
-- File: ...site-packages\transformers\models\encoder_decoder\modeling_encoder_decoder.py
-- line 534: loss = loss_fct(logits.reshape(-1, self.decoder.config.vocab_size), labels.view(-1))
-- mix:
-```python
-input1= logits.reshape(-1, self.decoder.config.vocab_size)
-target1= labels.view(-1)
-idx_start= 0
-multi_x= 1
-for i in range(target1.shape[0]):
-	if target1[i]==5 or target1[i]==9 or target1[i]==10:
-		if target1[i]==5:
-			multi_x= 1
-		elif target1[i]==9:
-			multi_x= 4
-		elif target1[i]==10:
-			multi_x= 2
-		if loss is not None:
-			loss += multi_x*loss_fct(input1[idx_start:i+1], target1[idx_start:i+1])
-		else:
-			loss = multi_x*loss_fct(input1[idx_start:i+1], target1[idx_start:i+1])
-	elif i== target1.shape[0]-1:
-		multi_x= 1
-		if loss is not None:
-			loss += multi_x*loss_fct(input1[idx_start:], target1[idx_start:])
-		else:
-			loss = multi_x*loss_fct(input1[idx_start:], target1[idx_start:])
-```
-
 ### Tokenizer, Masked-Language Modeling and RoBERTa2RoBERTa Model
 - Step by step:
 ```bash
